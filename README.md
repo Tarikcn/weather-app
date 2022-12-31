@@ -40,6 +40,7 @@ We will use `localStorage` to store any persistent data.
 Link to the live app:
 
 ## Screenshot
+![image](https://user-images.githubusercontent.com/115656280/210138090-326de01f-d0eb-43db-adfc-8e4d0342f3be.png)
 
 ## License
 
