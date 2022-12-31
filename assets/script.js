@@ -12,7 +12,7 @@ var cityHistory = [];
 function curentConditions(coord) {
   let lat = coord[0].lat.toString();
   let lon = coord[0].lon.toString();
-  let currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}${APIkey}`;
+  let currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}${APIkey}&units=metric`;
   fetch(currentWeatherAPI)
     .then(function (response) {
       return response.json();
@@ -39,7 +39,7 @@ function curentConditions(coord) {
       var humidity = data.main.humidity;
       currentWeather.append($("<p>").html("Humidity: " + humidity + " %"));
       var windSpeed = data.wind.speed;
-      currentWeather.append($("<p>").html("Wind Speed: " + windSpeed + " MPH"));
+      currentWeather.append($("<p>").html("Wind Speed: " + windSpeed + " KPH"));
     });
 }
 //fetch 5 days forecast api and display the next 5 days forecast onto the page
