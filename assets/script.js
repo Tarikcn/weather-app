@@ -81,3 +81,67 @@ function futureConditions(coord) {
       }
     });
 }
+function showWeather() {
+  // Clear existing search results
+  currentWeather.empty();
+  forecast5.empty();
+  // get the city's name, store it in a variable
+  let cityName = searchInput.val();
+  saveCityList(cityName);
+
+  searchInput.val("");
+  // fetch lat and lon
+  let geoCodingAPI =
+    "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + APIkey;
+
+  fetch(geoCodingAPI)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      curentConditions(data);
+      futureConditions(data);
+    });
+}
+// Render list of previous search input onto the page
+function renderCities() {
+  var savedCity = JSON.parse(localStorage.getItem("cityHistory"));
+  if (savedCity !== null) {
+    cityHistory = savedCity;
+    for (let i = 0; i < cityHistory.length; i++) {
+      // render no more than 5 searches
+      if (i === 4) {
+        break;
+      }
+      let cityBtn = $("<button>").attr(
+        "class",
+        "btn btn-secondary btn-block cityBtn"
+      );
+      cityBtn.text(cityHistory[i]);
+      citiesList.append(cityBtn);
+    }
+  }
+}
+
+// Save new Input into local storage
+function saveCityList(cityName) {
+  let checkHistory = cityHistory.includes(cityName);
+  if (!checkHistory && cityName !== "") {
+    cityHistory.unshift(cityName);
+    localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
+    citiesList.empty();
+    renderCities();
+  }
+}
+
+renderCities();
+
+// search Button, click event
+submitBtn.on("click", showWeather);
+
+// Search history buttons, click event
+$(".cityBtn").on("click", function (event) {
+  var clickCity = event.target.innerText;
+  $("#search-input").val(clickCity);
+  showWeather();
+});
