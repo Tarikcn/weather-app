@@ -1,0 +1,15 @@
+header {
+  background: linear-gradient(to left, #20084a, #3463bc);
+}
+.btn {
+  background-color: #3463bc;
+  color: rgb(232, 232, 232);
+}
+hr weather-hr {
+  border-width: 2px;
+  border-color: lightgray;
+}
+btn search-button {
+  float: left;
+  margin-top: 3px;
+}
