@@ -1,15 +1,33 @@
 header {
   background: linear-gradient(to left, #20084a, #3463bc);
 }
+
 .btn {
-  background-color: #3463bc;
   color: rgb(232, 232, 232);
 }
-hr weather-hr {
+
+hr {
   border-width: 2px;
   border-color: lightgray;
 }
-btn search-button {
+
+h2 {
   float: left;
-  margin-top: 3px;
+}
+
+#today-container {
+  border-width: 2px;
+}
+.btn-block + .btn-block {
+  margin-top: 0;
+}
+
+.cityBtn {
+  margin-bottom: 3px;
+  border-radius: 5px;
+}
+
+.five-days {
+  background-color: rgb(27, 27, 59);
+  margin: 15px;
 }
